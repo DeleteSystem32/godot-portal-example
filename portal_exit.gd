@@ -11,3 +11,7 @@ func set_camera_position(relative_pos):
 func set_camera_basis(source_basis):
 	var target_rot = global_transform.basis.get_euler() + source_basis.get_euler()
 	$Viewport/Camera.global_transform.basis = Basis(target_rot)
+	
+func set_camera_rotation(source_rot):
+	var target_rot = global_transform.basis.orthonormalized().get_euler() + source_rot
+	$Viewport/Camera.global_transform.basis = Basis(target_rot)
