@@ -4,6 +4,8 @@ extends KinematicBody
 # var a = 2
 # var b = "text"
 
+signal moved(player)
+
 const move_speed = 3.0
 
 var camera setget ,get_camera
@@ -17,15 +19,18 @@ func get_camera():
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
 	var move_dir = Vector3()
-	move_dir.z += (int(Input.is_action_pressed("move_back")) - int(Input.is_action_pressed("move_forward")))
-	move_dir.x += (int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left")))
+	move_dir += (int(Input.is_action_pressed("move_back")) - int(Input.is_action_pressed("move_forward"))) * transform.basis.z
+	move_dir += (int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))) * transform.basis.x
 	move_dir *= move_speed
 	move_and_slide(move_dir)
+	if move_dir.length_squared() > 0.0001:
+		emit_signal("moved", self)
 	
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x/200.0)
 		$head.rotate_x(-event.relative.y/200.0)
+		emit_signal("moved", self)
 		
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
