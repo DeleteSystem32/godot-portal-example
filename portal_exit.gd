@@ -11,6 +11,7 @@ func _ready():
 
 func get_viewport_texture(recursion_level = 0):
 #	$Viewport.size = get_viewport().size
+#	print(viewports[recursion_level].get_texture())
 	return viewports[recursion_level].get_texture()
 	
 func set_camera_position(relative_pos, recursion_level = 0):

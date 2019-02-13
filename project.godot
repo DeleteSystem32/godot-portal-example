@@ -19,6 +19,10 @@ config/name="portal_test"
 run/main_scene="res://main_level.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [input]
 
 move_forward={
@@ -52,6 +56,12 @@ move_right={
 3d_physics/layer_3="world"
 3d_render/layer_4="portal_lv2"
 3d_render/layer_5="portal_lv3"
+3d_render/layer_6="portal_lv4"
+3d_render/layer_7="portal_lv5"
+3d_render/layer_8="portal_lv6"
+3d_render/layer_9="portal_lv7"
+3d_render/layer_10="portal_lv8"
+3d_render/layer_11="portal_lv9"
 
 [rendering]
 

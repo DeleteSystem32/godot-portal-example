@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://portal.gd" type="Script" id=1]
 [ext_resource path="res://portal.shader" type="Shader" id=2]
@@ -9,24 +9,12 @@ extents = Vector3( 1.5, 1.5, 0 )
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 5, 1, 5 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 
 [sub_resource type="QuadMesh" id=4]
 size = Vector2( 3, 3 )
-
-[sub_resource type="ShaderMaterial" id=5]
-resource_local_to_scene = true
-shader = ExtResource( 2 )
-
-[sub_resource type="ShaderMaterial" id=6]
-resource_local_to_scene = true
-shader = ExtResource( 2 )
-
-[sub_resource type="ShaderMaterial" id=7]
-resource_local_to_scene = true
-shader = ExtResource( 2 )
 
 [node name="portal" type="Spatial"]
 script = ExtResource( 1 )
@@ -51,7 +39,7 @@ shape = SubResource( 2 )
 [node name="portal_mesh_lv0" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 2
-material_override = SubResource( 3 )
+material_override = SubResource( 5 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -67,7 +55,7 @@ material/0 = null
 [node name="portal_mesh_lv2" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 8
-material_override = SubResource( 6 )
+material_override = SubResource( 5 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -75,7 +63,55 @@ material/0 = null
 [node name="portal_mesh_lv3" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 16
-material_override = SubResource( 7 )
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv4" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 32
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv5" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 64
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv6" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 128
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv7" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 0
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv8" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 512
+material_override = SubResource( 5 )
+cast_shadow = 0
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="portal_mesh_lv9" type="MeshInstance" parent="portal_meshes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+layers = 1024
+material_override = SubResource( 5 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null

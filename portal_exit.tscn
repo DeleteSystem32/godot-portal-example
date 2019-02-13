@@ -29,3 +29,59 @@ shadow_atlas_size = 2048
 cull_mask = 17
 current = true
 
+[node name="Viewport_lv3" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv3"]
+cull_mask = 33
+current = true
+
+[node name="Viewport_lv4" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv4"]
+cull_mask = 65
+current = true
+
+[node name="Viewport_lv5" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv5"]
+cull_mask = 129
+current = true
+
+[node name="Viewport_lv6" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv6"]
+cull_mask = 257
+current = true
+
+[node name="Viewport_lv7" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv7"]
+cull_mask = 513
+current = true
+
+[node name="Viewport_lv8" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv8"]
+cull_mask = 1025
+current = true
+
+[node name="Viewport_lv9" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv9"]
+cull_mask = 1
+current = true
+

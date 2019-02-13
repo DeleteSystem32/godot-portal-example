@@ -9,10 +9,11 @@ var portal_meshes = []
 func _ready():
 	portal_exit = get_node(portal_exit_path)
 	var meshes = $portal_meshes.get_children()
-	for i in range(min(max_recursion, meshes.size()-1)):
+	for i in range(min(max_recursion, meshes.size())):
 		portal_meshes.append(meshes[i])
 		portal_meshes[i].material_override = portal_meshes[i].material_override.duplicate()
 		portal_meshes[i].material_override.set_shader_param("viewport_texture", portal_exit.get_viewport_texture(i))
+#		portal_meshes[i].material_override.set_shader_param("recursion_level", i)
 
 func _on_portal_activation_body_entered(body):
 	body.connect("moved", self, "_on_player_moved")

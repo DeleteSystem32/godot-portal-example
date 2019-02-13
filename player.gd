@@ -12,6 +12,8 @@ var camera setget ,get_camera
 
 var previous_location = Vector3()
 
+var has_focus = true
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -31,13 +33,17 @@ func _process(delta):
 		emit_signal("moved", self)
 	
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.pressed:
+		has_focus = true
+	
+	if event is InputEventMouseMotion && has_focus:
 		rotate_y(-event.relative.x/200.0)
 		$head.rotate_x(-event.relative.y/200.0)
 		emit_signal("moved", self)
 		
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		has_focus = false
 		
 func get_movement_direction():
 	return (global_transform.origin - previous_location).normalized()

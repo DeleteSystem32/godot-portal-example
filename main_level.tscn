@@ -65,7 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4436, 0, 0 )
 
 [node name="portal" parent="portal_gate" instance=ExtResource( 6 )]
 portal_exit_path = NodePath("../../portal_exit")
-max_recursion = 3
+max_recursion = 9
 
 [node name="MeshInstance" type="MeshInstance" parent="portal_gate"]
 editor/display_folded = true
