@@ -46,9 +46,12 @@ move_right={
 
 3d_render/layer_1="main_world"
 3d_physics/layer_1="player"
-3d_render/layer_2="portalled_objects"
+3d_render/layer_2="portal_lv0"
 3d_physics/layer_2="characters"
+3d_render/layer_3="portal_lv1"
 3d_physics/layer_3="world"
+3d_render/layer_4="portal_lv2"
+3d_render/layer_5="portal_lv3"
 
 [rendering]
 

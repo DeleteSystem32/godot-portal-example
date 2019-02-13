@@ -10,5 +10,6 @@ keep_3d_linear = true
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport"]
-cull_mask = 3
+cull_mask = 5
+current = true
 

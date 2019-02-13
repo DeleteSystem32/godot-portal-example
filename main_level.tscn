@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://main_level.gd" type="Script" id=1]
 [ext_resource path="res://player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://building_interior.tscn" type="PackedScene" id=3]
 [ext_resource path="res://building.tscn" type="PackedScene" id=4]
+[ext_resource path="res://portal_exit.tscn" type="PackedScene" id=5]
+[ext_resource path="res://portal.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.329412, 0.658824, 0.419608, 1 )
@@ -14,6 +16,15 @@ size = Vector2( 50, 50 )
 
 [sub_resource type="ConvexPolygonShape" id=3]
 points = PoolVector3Array( 25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, -25 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.2, 3, 0.2 )
+
+[sub_resource type="ConvexPolygonShape" id=5]
+points = PoolVector3Array( -0.1, 1.5, 0.1, 0.1, 1.5, -0.1, 0.1, 1.5, 0.1, -0.1, 1.5, -0.1, -0.1, -1.5, 0.1, 0.1, -1.5, -0.1, 0.1, -1.5, 0.1, -0.1, -1.5, -0.1, 0.1, 1.5, 0.1, -0.1, 1.5, -0.1, 0.1, 1.5, -0.1, -0.1, 1.5, 0.1, 0.1, -1.5, 0.1, -0.1, -1.5, -0.1, 0.1, -1.5, -0.1, -0.1, -1.5, 0.1, 0.1, 1.5, 0.1, -0.1, -1.5, 0.1, -0.1, 1.5, 0.1, 0.1, -1.5, 0.1, 0.1, 1.5, -0.1, -0.1, -1.5, -0.1, -0.1, 1.5, -0.1, 0.1, -1.5, -0.1 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 3.5, 0.2, 0.2 )
 
 [node name="main_level" type="Spatial"]
 script = ExtResource( 1 )
@@ -45,4 +56,44 @@ visible = false
 shadow_enabled = true
 
 [node name="building" parent="." instance=ExtResource( 4 )]
+
+[node name="portal_exit" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 6 )
+
+[node name="portal_gate" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4436, 0, 0 )
+
+[node name="portal" parent="portal_gate" instance=ExtResource( 6 )]
+portal_exit_path = NodePath("../../portal_exit")
+
+[node name="MeshInstance" type="MeshInstance" parent="portal_gate"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="portal_gate/MeshInstance"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="portal_gate/MeshInstance/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="portal_gate"]
+editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="portal_gate/MeshInstance2"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="portal_gate/MeshInstance2/StaticBody"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="portal_gate"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 6 )
+material/0 = null
 

@@ -10,6 +10,8 @@ const move_speed = 3.0
 
 var camera setget ,get_camera
 
+var previous_location = Vector3()
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -18,11 +20,13 @@ func get_camera():
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta):
+	previous_location = global_transform.origin
 	var move_dir = Vector3()
 	move_dir += (int(Input.is_action_pressed("move_back")) - int(Input.is_action_pressed("move_forward"))) * transform.basis.z
 	move_dir += (int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))) * transform.basis.x
 	move_dir *= move_speed
 	move_and_slide(move_dir)
+	
 	if move_dir.length_squared() > 0.0001:
 		emit_signal("moved", self)
 	
@@ -34,3 +38,6 @@ func _input(event):
 		
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+func get_movement_direction():
+	return (global_transform.origin - previous_location).normalized()
