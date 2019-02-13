@@ -29,7 +29,7 @@ func _on_player_moved(player):
 	for i in range(max_recursion):
 		previous_camera_location = portal_exit.set_camera_position(to_local(previous_camera_location), i)
 		var localised_rot = previous_camera_basis.orthonormalized().get_euler() - own_rot
-		previous_camera_basis = portal_exit.set_camera_rotation(localised_rot)
+		previous_camera_basis = portal_exit.set_camera_rotation(localised_rot, i)
 
 func _on_portal_entry_body_entered(body):
 	if body.get_movement_direction().dot(global_transform.basis.z) < 0:		
