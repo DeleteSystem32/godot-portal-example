@@ -5,11 +5,27 @@
 [node name="portal_exit" type="Spatial"]
 script = ExtResource( 1 )
 
-[node name="Viewport" type="Viewport" parent="."]
+[node name="Viewport_lv0" type="Viewport" parent="."]
 keep_3d_linear = true
 shadow_atlas_size = 2048
 
-[node name="Camera" type="Camera" parent="Viewport"]
+[node name="Camera" type="Camera" parent="Viewport_lv0"]
 cull_mask = 5
+current = true
+
+[node name="Viewport_lv1" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv1"]
+cull_mask = 9
+current = true
+
+[node name="Viewport_lv2" type="Viewport" parent="."]
+keep_3d_linear = true
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv2"]
+cull_mask = 17
 current = true
 

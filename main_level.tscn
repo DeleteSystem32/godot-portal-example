@@ -44,7 +44,7 @@ shape = SubResource( 3 )
 [node name="player" parent="." groups=[
 "players",
 ] instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.97846 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.976, 0, 5.23898 )
 
 [node name="building_interior" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -76.2976, 0, 22.371 )
@@ -65,6 +65,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4436, 0, 0 )
 
 [node name="portal" parent="portal_gate" instance=ExtResource( 6 )]
 portal_exit_path = NodePath("../../portal_exit")
+max_recursion = 3
 
 [node name="MeshInstance" type="MeshInstance" parent="portal_gate"]
 editor/display_folded = true
