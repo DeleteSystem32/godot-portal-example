@@ -1,4 +1,5 @@
 extends Spatial
+class_name Portal
 
 export(NodePath) var portal_exit_path
 export(int) var max_recursion = 1
@@ -23,17 +24,15 @@ func _on_portal_activation_body_exited(body):
 	body.disconnect("moved", self, "_on_player_moved")
 	hide()
 
-func _on_player_moved(player):
-	var previous_camera_location = player.camera.global_transform.origin
-	var previous_camera_basis = player.camera.global_transform.basis
-	var own_rot = global_transform.basis.orthonormalized().get_euler()
-	for i in range(max_recursion):
-		previous_camera_location = portal_exit.set_camera_position(to_local(previous_camera_location), i)
-		var localised_rot = previous_camera_basis.orthonormalized().get_euler() - own_rot
-		previous_camera_basis = portal_exit.set_camera_rotation(localised_rot, i)
+func _on_player_moved(player):	
+	portal_exit.set_camera_position_new(player.camera.global_transform.origin, self, 0, max_recursion)
+	portal_exit.set_camera_rotation_new(player.camera.global_transform.basis.orthonormalized().get_euler(),
+		global_transform.basis.orthonormalized().get_euler(), 0, max_recursion)
+	
 
 func _on_portal_entry_body_entered(body):
-	if body.get_movement_direction().dot(global_transform.basis.z) < 0:		
+	print(body.get_movement_direction().dot(global_transform.basis.z))
+	if body is Player && body.get_movement_direction().dot(global_transform.basis.z) < 0: # check if player is moving toward portal
 		var localised_rot = body.global_transform.basis.orthonormalized().get_euler() - global_transform.basis.orthonormalized().get_euler()
 		var target_rot = portal_exit.global_transform.basis.orthonormalized().get_euler() + localised_rot
 		body.global_transform.basis = Basis(target_rot)
