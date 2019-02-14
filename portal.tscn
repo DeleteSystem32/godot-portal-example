@@ -7,9 +7,9 @@
 extents = Vector3( 1.5, 1.5, 0 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 5, 1, 5 )
+extents = Vector3( 20, 1, 20 )
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=3]
 resource_local_to_scene = true
 shader = ExtResource( 2 )
 
@@ -28,7 +28,7 @@ collision_mask = 3
 shape = SubResource( 1 )
 
 [node name="portal_activation" type="Area" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 collision_layer = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="portal_activation"]
@@ -39,7 +39,7 @@ shape = SubResource( 2 )
 [node name="portal_mesh_lv0" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 2
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -47,7 +47,7 @@ material/0 = null
 [node name="portal_mesh_lv1" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 4
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -55,7 +55,7 @@ material/0 = null
 [node name="portal_mesh_lv2" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 8
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -63,7 +63,7 @@ material/0 = null
 [node name="portal_mesh_lv3" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 16
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -71,7 +71,7 @@ material/0 = null
 [node name="portal_mesh_lv4" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 32
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -79,7 +79,7 @@ material/0 = null
 [node name="portal_mesh_lv5" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 64
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -87,7 +87,7 @@ material/0 = null
 [node name="portal_mesh_lv6" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 128
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -95,7 +95,7 @@ material/0 = null
 [node name="portal_mesh_lv7" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 0
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -103,7 +103,7 @@ material/0 = null
 [node name="portal_mesh_lv8" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 512
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
@@ -111,11 +111,16 @@ material/0 = null
 [node name="portal_mesh_lv9" type="MeshInstance" parent="portal_meshes"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 layers = 1024
-material_override = SubResource( 5 )
+material_override = SubResource( 3 )
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = null
 
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -1.5, 0, 0, 3, 3, 0 )
+
 [connection signal="body_entered" from="portal_entry" to="." method="_on_portal_entry_body_entered"]
 [connection signal="body_entered" from="portal_activation" to="." method="_on_portal_activation_body_entered"]
 [connection signal="body_exited" from="portal_activation" to="." method="_on_portal_activation_body_exited"]
+[connection signal="camera_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_entered"]
+[connection signal="camera_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_camera_exited"]

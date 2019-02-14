@@ -58,7 +58,7 @@ shadow_enabled = true
 [node name="building" parent="." instance=ExtResource( 4 )]
 
 [node name="portal_exit" parent="." instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4.09361 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.016, 0, 4 )
 
 [node name="portal_gate" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )

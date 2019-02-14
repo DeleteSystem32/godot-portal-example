@@ -1,18 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://portal_exit.gd" type="Script" id=1]
+[ext_resource path="res://camera.gd" type="Script" id=2]
 
 [node name="portal_exit" type="Spatial"]
 script = ExtResource( 1 )
-
-[node name="Viewport_lv0" type="Viewport" parent="."]
-keep_3d_linear = true
-render_target_update_mode = 3
-shadow_atlas_size = 2048
-
-[node name="Camera" type="Camera" parent="Viewport_lv0"]
-cull_mask = 5
-current = true
 
 [node name="Viewport_lv1" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -20,8 +12,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv1"]
-cull_mask = 9
+cull_mask = 5
 current = true
+script = ExtResource( 2 )
+recursion_level = 1
 
 [node name="Viewport_lv2" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -29,8 +23,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv2"]
-cull_mask = 17
+cull_mask = 9
 current = true
+script = ExtResource( 2 )
+recursion_level = 2
 
 [node name="Viewport_lv3" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -38,8 +34,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv3"]
-cull_mask = 33
+cull_mask = 17
 current = true
+script = ExtResource( 2 )
+recursion_level = 3
 
 [node name="Viewport_lv4" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -47,8 +45,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv4"]
-cull_mask = 65
+cull_mask = 33
 current = true
+script = ExtResource( 2 )
+recursion_level = 4
 
 [node name="Viewport_lv5" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -56,8 +56,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv5"]
-cull_mask = 129
+cull_mask = 65
 current = true
+script = ExtResource( 2 )
+recursion_level = 5
 
 [node name="Viewport_lv6" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -65,8 +67,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv6"]
-cull_mask = 257
+cull_mask = 129
 current = true
+script = ExtResource( 2 )
+recursion_level = 6
 
 [node name="Viewport_lv7" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -74,8 +78,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv7"]
-cull_mask = 513
+cull_mask = 257
 current = true
+script = ExtResource( 2 )
+recursion_level = 7
 
 [node name="Viewport_lv8" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -83,8 +89,10 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv8"]
-cull_mask = 1025
+cull_mask = 513
 current = true
+script = ExtResource( 2 )
+recursion_level = 8
 
 [node name="Viewport_lv9" type="Viewport" parent="."]
 keep_3d_linear = true
@@ -92,6 +100,19 @@ render_target_update_mode = 3
 shadow_atlas_size = 2048
 
 [node name="Camera" type="Camera" parent="Viewport_lv9"]
+cull_mask = 1025
+current = true
+script = ExtResource( 2 )
+recursion_level = 9
+
+[node name="Viewport_lv10" type="Viewport" parent="."]
+keep_3d_linear = true
+render_target_update_mode = 3
+shadow_atlas_size = 2048
+
+[node name="Camera" type="Camera" parent="Viewport_lv10"]
 cull_mask = 1
 current = true
+script = ExtResource( 2 )
+recursion_level = 10
 

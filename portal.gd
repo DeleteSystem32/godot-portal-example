@@ -35,8 +35,19 @@ func _on_portal_entry_body_entered(body):
 	if body is Player && body.get_movement_direction().dot(global_transform.basis.z) < 0: # check if player is moving toward portal
 		var localised_rot = body.global_transform.basis.orthonormalized().get_euler() - global_transform.basis.orthonormalized().get_euler()
 		var target_rot = portal_exit.global_transform.basis.orthonormalized().get_euler() + localised_rot
+#		target_rot.x = 0
+#		target_rot.z = 0
 		body.global_transform.basis = Basis(target_rot)
 		var relative_pos = to_local(body.global_transform.origin)
 		var new_pos = portal_exit.to_global(relative_pos)
 		body.global_transform.origin = new_pos
 	
+
+func _on_VisibilityNotifier_camera_entered(camera):
+	print(camera)
+	if camera.has_user_signal("camera_moved"):
+		pass
+
+func _on_VisibilityNotifier_camera_exited(camera):
+	if camera.has_user_signal("camera_moved"):
+		pass

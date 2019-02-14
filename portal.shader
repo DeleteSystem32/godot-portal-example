@@ -10,4 +10,5 @@ void fragment(){
 //	real_uv = (INV_CAMERA_MATRIX * vec4(real_uv, 0.0, 0.0)).xy;
 //	ALBEDO = textureLod(viewport_texture, SCREEN_UV, recursion_level).rgb;
 	ALBEDO = texture(viewport_texture, SCREEN_UV).rgb;
+	//ALBEDO.r = DEPTH;
 }
