@@ -37,6 +37,14 @@ func set_camera_position_new(cam_pos_global, portal_entry, recursion_level = 0, 
 	cam_floor.y = 0
 #	cameras[recursion_level].near = Vector3().distance_to(cam_floor)
 #	viewports[recursion_level].update_worlds()
+
+func update_camera(previous_camera, portal_entry):
+	if previous_camera.recursion_level <= portal_entry.max_recursion:
+		set_camera_position(previous_camera.global_transform.origin, portal_entry, previous_camera.recursion_level)
+		set_camera_rotation(previous_camera.global_transform.basis.orthonormalized().get_euler(),
+			portal_entry.global_transform.basis.orthonormalized().get_euler(), previous_camera.recursion_level)
+			
+		cameras[previous_camera.recursion_level].make_dirty()
 	
 func set_camera_rotation_new(source_rot, portal_entry_rot, recursion_level = 0, max_recursion_level = 1):
 	var localised_rot = source_rot - portal_entry_rot

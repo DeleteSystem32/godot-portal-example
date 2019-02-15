@@ -32,7 +32,8 @@ func _process(delta):
 	move_and_slide(move_dir)
 	
 	if move_dir.length_squared() > 0.0001:
-		emit_signal("moved", self)
+		$head/Camera.make_dirty()
+#		emit_signal("moved", self)
 	
 func _input(event):
 	if event is InputEventMouseButton && event.button_index == BUTTON_LEFT && event.pressed:
@@ -42,7 +43,8 @@ func _input(event):
 	if event is InputEventMouseMotion && has_focus:
 		rotate_y(-event.relative.x/200.0)
 		$head.rotate_x(-event.relative.y/200.0)
-		emit_signal("moved", self)
+#		emit_signal("moved", self)
+		$head/Camera.make_dirty()
 		
 	if event is InputEventKey && event.pressed && event.scancode == KEY_ESCAPE:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

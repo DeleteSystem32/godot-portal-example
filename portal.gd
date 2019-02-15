@@ -45,11 +45,12 @@ func _on_portal_entry_body_entered(body):
 		body.global_transform.origin = new_pos
 		
 func _on_camera_moved(camera):
-	print(camera)
+#	print(camera)
 	if camera.recursion_level <= max_recursion:
-		portal_exit.set_camera_position(camera.global_transform.origin, self, camera.recursion_level)
-		portal_exit.set_camera_rotation(camera.global_transform.basis.orthonormalized().get_euler(),
-			global_transform.basis.orthonormalized().get_euler(), camera.recursion_level)
+		portal_exit.update_camera(camera, self)
+#		portal_exit.set_camera_position(camera.global_transform.origin, self, camera.recursion_level)
+#		portal_exit.set_camera_rotation(camera.global_transform.basis.orthonormalized().get_euler(),
+#			global_transform.basis.orthonormalized().get_euler(), camera.recursion_level)
 	
 
 func _on_VisibilityNotifier_camera_entered(camera):
@@ -58,5 +59,6 @@ func _on_VisibilityNotifier_camera_entered(camera):
 		camera.connect("camera_moved", self, "_on_camera_moved")
 
 func _on_VisibilityNotifier_camera_exited(camera):
+	pass
 	if camera is MyCamera:
 		camera.disconnect("camera_moved", self, "_on_camera_moved")

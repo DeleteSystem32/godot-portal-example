@@ -10,10 +10,12 @@ export(int) var recursion_level : int = 0
 func _ready():
 	pass
 	
-func _physics_process(delta):
-	
-	if global_transform.origin != previous_pos || global_transform.basis.get_euler() != previous_rot:
-		print(self)
-		emit_signal("camera_moved", self)
-		previous_pos = global_transform.origin
-		previous_rot = global_transform.basis.get_euler()
+#func _physics_process(delta):
+#
+#	if global_transform.origin != previous_pos || global_transform.basis.get_euler() != previous_rot:
+#		emit_signal("camera_moved", self)
+#		previous_pos = global_transform.origin
+#		previous_rot = global_transform.basis.get_euler()
+		
+func make_dirty():
+	emit_signal("camera_moved", self)
