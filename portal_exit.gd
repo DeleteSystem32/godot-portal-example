@@ -15,6 +15,17 @@ func _ready():
 func get_viewport_texture(recursion_level = 0):
 	return viewports[recursion_level].get_texture()
 	
+func set_camera_position(cam_pos_global, portal_entry, recursion_level = 0):
+	var cam_pos_local = portal_entry.to_local(cam_pos_global)
+	var new_cam_pos = to_global(cam_pos_local)
+	cameras[recursion_level].global_transform.origin = new_cam_pos
+	
+func set_camera_rotation(source_rot, portal_entry_rot, recursion_level = 0):
+	print(recursion_level)
+	var localised_rot = source_rot - portal_entry_rot
+	var target_rot = global_transform.basis.orthonormalized().get_euler() + localised_rot
+	cameras[recursion_level].global_transform.basis = Basis(target_rot)
+	
 func set_camera_position_new(cam_pos_global, portal_entry, recursion_level = 0, max_recursion_level = 1):
 	var cam_pos_local = portal_entry.to_local(cam_pos_global)
 	var new_cam_pos = to_global(cam_pos_local)

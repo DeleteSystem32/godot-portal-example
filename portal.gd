@@ -17,12 +17,14 @@ func _ready():
 #		portal_meshes[i].material_override.set_shader_param("recursion_level", i)
 
 func _on_portal_activation_body_entered(body):
-	body.connect("moved", self, "_on_player_moved")
-	show()
+	pass
+#	body.connect("moved", self, "_on_player_moved")
+#	show()
 
 func _on_portal_activation_body_exited(body):
-	body.disconnect("moved", self, "_on_player_moved")
-	hide()
+	pass
+#	body.disconnect("moved", self, "_on_player_moved")
+#	hide()
 
 func _on_player_moved(player):	
 	portal_exit.set_camera_position_new(player.camera.global_transform.origin, self, 0, max_recursion)
@@ -41,13 +43,20 @@ func _on_portal_entry_body_entered(body):
 		var relative_pos = to_local(body.global_transform.origin)
 		var new_pos = portal_exit.to_global(relative_pos)
 		body.global_transform.origin = new_pos
+		
+func _on_camera_moved(camera):
+	print(camera)
+	if camera.recursion_level <= max_recursion:
+		portal_exit.set_camera_position(camera.global_transform.origin, self, camera.recursion_level)
+		portal_exit.set_camera_rotation(camera.global_transform.basis.orthonormalized().get_euler(),
+			global_transform.basis.orthonormalized().get_euler(), camera.recursion_level)
 	
 
 func _on_VisibilityNotifier_camera_entered(camera):
-	print(camera)
-	if camera.has_user_signal("camera_moved"):
-		pass
+#	print("camera")
+	if camera is MyCamera:
+		camera.connect("camera_moved", self, "_on_camera_moved")
 
 func _on_VisibilityNotifier_camera_exited(camera):
-	if camera.has_user_signal("camera_moved"):
-		pass
+	if camera is MyCamera:
+		camera.disconnect("camera_moved", self, "_on_camera_moved")
