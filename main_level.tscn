@@ -58,6 +58,9 @@ shadow_enabled = true
 [node name="building" parent="." instance=ExtResource( 4 )]
 
 [node name="portal_exit" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10, 0, -4 )
+
+[node name="portal_exit2" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4 )
 
 [node name="portal_gate" type="Spatial" parent="."]
@@ -66,6 +69,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
 [node name="portal" parent="portal_gate" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
 portal_exit_path = NodePath("../../portal_exit")
+max_recursion = 9
+
+[node name="portal2" parent="portal_gate" instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.1 )
+portal_exit_path = NodePath("../../portal_exit2")
 max_recursion = 9
 
 [node name="MeshInstance" type="MeshInstance" parent="portal_gate"]

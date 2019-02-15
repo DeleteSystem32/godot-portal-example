@@ -33,7 +33,6 @@ func _on_player_moved(player):
 	
 
 func _on_portal_entry_body_entered(body):
-	print(body.get_movement_direction().dot(global_transform.basis.z))
 	if body is Player && body.get_movement_direction().dot(global_transform.basis.z) < 0: # check if player is moving toward portal
 		var localised_rot = body.global_transform.basis.orthonormalized().get_euler() - global_transform.basis.orthonormalized().get_euler()
 		var target_rot = portal_exit.global_transform.basis.orthonormalized().get_euler() + localised_rot
@@ -46,8 +45,9 @@ func _on_portal_entry_body_entered(body):
 		
 func _on_camera_moved(camera):
 #	print(camera)
-	if camera.recursion_level <= max_recursion:
-		portal_exit.update_camera(camera, self)
+	if camera.global_transform.basis.z.dot(global_transform.basis.z) > 0:
+		if camera.recursion_level <= max_recursion:
+			portal_exit.update_camera(camera, self)
 #		portal_exit.set_camera_position(camera.global_transform.origin, self, camera.recursion_level)
 #		portal_exit.set_camera_rotation(camera.global_transform.basis.orthonormalized().get_euler(),
 #			global_transform.basis.orthonormalized().get_euler(), camera.recursion_level)

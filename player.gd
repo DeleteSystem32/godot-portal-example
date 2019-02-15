@@ -41,6 +41,7 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if event is InputEventMouseMotion && has_focus:
+		
 		rotate_y(-event.relative.x/200.0)
 		$head.rotate_x(-event.relative.y/200.0)
 #		emit_signal("moved", self)
