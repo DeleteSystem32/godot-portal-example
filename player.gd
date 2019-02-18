@@ -5,7 +5,7 @@ class_name Player
 # var a = 2
 # var b = "text"
 
-signal moved(player)
+#signal moved(player)
 
 const move_speed = 6.0
 
@@ -41,9 +41,10 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	if event is InputEventMouseMotion && has_focus:
-		
-		rotate_y(-event.relative.x/200.0)
-		$head.rotate_x(-event.relative.y/200.0)
+#		print(to_global(Vector3.UP))
+		rotate_object_local(Vector3.UP, -event.relative.x/200.0)
+#		rotate_y(-event.relative.x/200.0)
+		$head.rotate_object_local(Vector3.RIGHT, -event.relative.y/200.0)
 #		emit_signal("moved", self)
 		$head/Camera.make_dirty()
 		
