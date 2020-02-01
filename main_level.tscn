@@ -30,7 +30,6 @@ size = Vector3( 3.5, 0.2, 0.2 )
 script = ExtResource( 1 )
 
 [node name="floor" type="MeshInstance" parent="."]
-editor/display_folded = true
 mesh = SubResource( 2 )
 material/0 = null
 
@@ -58,7 +57,7 @@ shadow_enabled = true
 [node name="building" parent="." instance=ExtResource( 4 )]
 
 [node name="portal_exit" parent="." instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -1.2, 1.62008, -0.946218 )
+transform = Transform( 0.98045, 0, -0.196768, 0, 1, 0, 0.196768, 0, 0.98045, -10.1593, 0, 7.37432 )
 
 [node name="portal_gate" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
@@ -69,7 +68,6 @@ portal_exit_path = NodePath("../../portal_exit")
 max_recursion = 9
 
 [node name="MeshInstance" type="MeshInstance" parent="portal_gate"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -82,7 +80,6 @@ collision_mask = 2
 shape = SubResource( 5 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="portal_gate"]
-editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1.5, 0 )
 mesh = SubResource( 4 )
 material/0 = null
@@ -98,6 +95,5 @@ shape = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
 mesh = SubResource( 6 )
 material/0 = null
-
 
 [editable path="player"]
